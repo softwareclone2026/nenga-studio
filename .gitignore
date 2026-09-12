@@ -7,3 +7,7 @@ node_modules/
 xcuserdata/
 .DS_Store
 samples/output/
+node_modules.old/
+desktop/dist/
+desktop/out/
+node_modules

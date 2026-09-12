@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; script-src 'self'" />
+    <title>年賀スタジオ</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <aside class="sidebar">
+        <div class="brand">
+          <span class="brand-mark">年</span>
+          <div>
+            <div class="brand-title">年賀スタジオ</div>
+            <div class="brand-sub" id="file-name">新しい年賀状</div>
+          </div>
+        </div>
+        <nav class="tabs" id="tabs"></nav>
+        <div class="sidebar-stats" id="sidebar-stats"></div>
+      </aside>
+      <main class="main" id="main"></main>
+    </div>
+    <div class="toast" id="toast" hidden></div>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

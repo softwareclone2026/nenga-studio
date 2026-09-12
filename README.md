@@ -1,9 +1,13 @@
 # 年賀スタジオ（NengaStudio）
 
-macOS 用の年賀状ソフトです。住所録の管理から文面（裏面）のデザイン、宛名面
-（表面）のレイアウト、はがき実寸での印刷・PDF 書き出しまでを 1 つのアプリで
-行います。SwiftUI と Core Graphics / Core Text だけで書いたネイティブアプリで、
-外部ライブラリには依存していません。
+年賀状ソフトです。住所録の管理から文面（裏面）のデザイン、宛名面（表面）の
+レイアウト、はがき実寸での印刷・PDF 書き出しまでを 1 つのアプリで行います。
+同じ機能を 2 つの実装で提供し、**書類（`.nenga`）は相互に読み書きできます**。
+
+| 実装 | 対応 OS | ソース | ビルド | 描画 |
+| --- | --- | --- | --- | --- |
+| Swift 版 | macOS（ほか iPad 版） | `Sources/` | Xcode | Core Graphics / Core Text |
+| デスクトップ版 | Windows / Linux / macOS | `desktop/` | Node.js + Electron | SVG |
 
 `筆まめ` などの市販ソフトとは無関係のオリジナル実装です。テンプレート・イラスト・
 名称はすべてこのリポジトリのために作ったもので、他社の素材や商標は使っていません。
@@ -44,8 +48,11 @@ macOS 用の年賀状ソフトです。住所録の管理から文面（裏面�
 - macOS 14 以降（開発と確認は macOS 26.6 / Xcode 26.6 で行っています）
 - ビルドには Xcode が必要です（SwiftUI のマクロが Xcode 同梱のツールチェーンに
   あるため、Command Line Tools だけではビルドできません）
+- デスクトップ版は Node.js 20 以降（開発は Node 26 / Electron 42 で確認）
 
 ## ビルドと起動
+
+### macOS 版（SwiftUI）
 
 ```sh
 # ビルドして dist/NengaStudio.app を作る
@@ -72,6 +79,34 @@ BIN=$(./scripts/build.sh --show-bin-path | tail -1)
 "$BIN/NengaStudio" --self-check             # 書類の保存・読み戻し・PDF・印刷設定の自己診断
 "$BIN/NengaStudio" --inspect out/sample.nenga
 ```
+
+### デスクトップ版（Windows / Linux / macOS）
+
+```sh
+cd desktop
+npm install
+npm start                    # アプリを起動
+npm test                     # コアと描画のテスト
+
+npx electron tools/self-check.js         # 自己診断（書類・CSV・PDF・描画）
+npx electron tools/render-samples.js out
+```
+
+配布パッケージは各 OS 上で作ります（クロスビルドはしません）。
+
+```sh
+cd desktop/scripts
+./setup-modules.sh    # 共有ボリュームに置いている場合（node_modules をローカルへ）
+./package-mac.sh      # macOS: dist/年賀スタジオ.app
+```
+
+Windows / Linux は `npm run dist:win` / `npm run dist:linux`（electron-builder）で
+インストーラを作ります。詳しくは [desktop/README.md](desktop/README.md) を参照してください。
+
+ネットワーク共有や外付けボリュームに置く場合は、`node_modules` をローカル
+ディスクへ逃がすと安定します（[desktop/README.md](desktop/README.md) を参照）。
+
+![デスクトップ版の文面デザイン](docs/images/desktop/ui-design.png)
 
 ## 使い方の流れ
 
@@ -123,21 +158,33 @@ Sources/NengaStudio/        SwiftUI アプリ
   Views/                    住所録・文面デザイン・宛名印刷・設定
   CLI/                      見本の描画、画面画像、アイコン生成
 Tests/NengaCoreTests/       Swift Testing による回帰テスト
+desktop/                    Electron 版（Windows / Linux / macOS）
+  electron/                 メインプロセス（ウィンドウ、ファイル入出力、PDF、印刷）
+  src/core/                 モデルとロジック（macOS 版 NengaCore の移植）
+  src/render/               SVG の組版・モチーフ・面のレンダラ・PDF 書き出し
+  src/ui/                   画面（HTML / CSS / JavaScript）
+  tools/                    見本の書き出し、アイコン生成、自己診断
+  test/                     コアと描画のテスト
 scripts/                    ビルド・アプリ作成・起動
 docs/                       印刷の注意点と実装メモ、画像
 ```
 
 設計の詳細は [docs/implementation.md](docs/implementation.md) に書いています。
+デスクトップ版は [docs/desktop.md](docs/desktop.md) にまとめています。
 
 ## テスト
 
 ```sh
-./scripts/test.sh
+./scripts/test.sh            # macOS 版（Swift Testing）
+cd desktop && npm test       # デスクトップ版（Node の標準テストランナー）
 ```
 
 住所の整形、CSV（Shift-JIS・引用符・見出しのゆれ）、干支と和暦、郵便番号枠の
 座標、縦書きの回転・字詰め、テンプレート、`.nenga` の読み書き、PDF のページ数と
 用紙サイズを確認します。
+
+デスクトップ版の自己診断では、描画した面の**非白ピクセルの割合**も見ています。
+真っ白な描画（画面のスクリプトが動いていない状態）を検出するためです。
 
 ## 制限
 
@@ -147,6 +194,10 @@ docs/                       印刷の注意点と実装メモ、画像
   取り込んでください）。
 - 筆まめなどの他社形式ファイルの直接取り込みには対応していません。CSV を経由
   してください。
+- デスクトップ版の PDF は、印刷の再現性を優先して 400dpi の画像として書き出し
+  ます（文字は選択できません）。macOS 版の PDF はベクターです。
+- デスクトップ版の印刷は、Electron の印刷ダイアログを使えない環境では PDF を
+  既定のビューアで開きます（そこから印刷してください）。
 
 ## 個人情報とデータ
 
