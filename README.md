@@ -148,10 +148,21 @@ docs/                       印刷の注意点と実装メモ、画像
 - 筆まめなどの他社形式ファイルの直接取り込みには対応していません。CSV を経由
   してください。
 
+## 個人情報とデータ
+
+- ソースには個人情報や API キーを含めていません。住所録のサンプル（`SampleContacts`）は
+  すべて架空の人物・住所・電話番号です。
+- ローカルの絶対パスやホスト名はソースに書きません。ビルドやデータの置き場所は
+  環境変数（`NENGA_SCRATCH` / `NENGA_APP_DIR` / `NENGA_DEVELOPER_DIR`）で指定します。
+- このアプリはネットワーク通信を行いません。作った `.nenga` ファイルは手元に保存
+  されるだけで、どこかへ送信されることはありません。
+- 生成物（`dist/`、`.build/`、Xcode の個人設定）は `.gitignore` で除外しています。
+
 ## ライセンス
 
 [LICENSE](LICENSE)（MIT）を参照してください。
 
 ## 連絡先
 
-不具合の報告や質問は softwareclone@proton.me までお願いします。
+不具合の報告や質問は [Issues](https://github.com/softwareclone2026/nenga-studio/issues)
+へお願いします。
