@@ -69,6 +69,8 @@ BIN=$(./scripts/build.sh --show-bin-path | tail -1)
 "$BIN/NengaStudio" --render-ui out          # 画面のスクリーンショット
 "$BIN/NengaStudio" --make-sample out/sample.nenga
 "$BIN/NengaStudio" --make-icon out/icon.png
+"$BIN/NengaStudio" --self-check             # 書類の保存・読み戻し・PDF・印刷設定の自己診断
+"$BIN/NengaStudio" --inspect out/sample.nenga
 ```
 
 ## 使い方の流れ

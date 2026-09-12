@@ -232,52 +232,25 @@ struct ContentView: View {
     }
 
     private func printAddressSheets() {
-        do {
-            let data = try addressPDFData()
-            printPDF(data, jobName: "年賀状 宛名面 \(document.model.year)")
-        } catch {
-            alertMessage = "印刷データを作成できませんでした: \(error.localizedDescription)"
+        let pages = document.model.printableContacts.map { PostcardPage.address($0) }
+        if let message = PostcardPrinting.print(
+            document: document.model,
+            pages: pages.isEmpty ? [.calibration] : pages,
+            jobName: "年賀状 宛名面 " + String(document.model.year),
+            assetLoader: document.imageLoader()
+        ) {
+            alertMessage = message
         }
     }
 
     private func printCalibrationSheet() {
-        do {
-            let data = try PostcardExport.makePDF(
-                document: document.model,
-                pages: [.calibration],
-                mode: .print,
-                assetLoader: document.imageLoader()
-            )
-            printPDF(data, jobName: "年賀状 位置合わせシート")
-        } catch {
-            alertMessage = "印刷データを作成できませんでした: \(error.localizedDescription)"
-        }
-    }
-
-    private func printPDF(_ data: Data, jobName: String) {
-        guard let pdf = PDFDocument(data: data) else {
-            alertMessage = "PDF を開けませんでした。"
-            return
-        }
-        let size = PostcardExport.pageSizePoints(document.model)
-        let info = (NSPrintInfo.shared.copy() as? NSPrintInfo) ?? NSPrintInfo()
-        info.paperSize = size
-        info.topMargin = 0
-        info.bottomMargin = 0
-        info.leftMargin = 0
-        info.rightMargin = 0
-        info.orientation = size.height > size.width ? .portrait : .landscape
-        info.horizontalPagination = .clip
-        info.verticalPagination = .clip
-        info.isHorizontallyCentered = false
-        info.isVerticallyCentered = false
-        if let operation = pdf.printOperation(for: info, scalingMode: .pageScaleNone, autoRotate: false) {
-            operation.jobTitle = jobName
-            operation.showsPrintPanel = true
-            operation.showsProgressPanel = true
-            operation.run()
-        } else {
-            alertMessage = "印刷を開始できませんでした。"
+        if let message = PostcardPrinting.print(
+            document: document.model,
+            pages: [.calibration],
+            jobName: "年賀状 位置合わせシート",
+            assetLoader: document.imageLoader()
+        ) {
+            alertMessage = message
         }
     }
 }

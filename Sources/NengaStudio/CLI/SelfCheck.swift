@@ -66,7 +66,19 @@ enum SelfCheck {
             "\(model.printableContacts.count) 件"
         )
 
-        // 4. テンプレートがすべて描ける
+        // 4. 印刷の用紙設定（実寸・余白なし）
+        let printInfo = PostcardPrinting.printInfo(for: model)
+        check(
+            "印刷の用紙サイズが実寸",
+            abs(printInfo.paperSize.width - mm.pt(100)) < 0.5 && abs(printInfo.paperSize.height - mm.pt(148)) < 0.5,
+            "\(printInfo.paperSize)"
+        )
+        check(
+            "余白なし・等倍で印刷する",
+            printInfo.topMargin == 0 && printInfo.leftMargin == 0 && printInfo.scalingFactor == 1
+        )
+
+        // 5. テンプレートがすべて描ける
         var templateFailures: [String] = []
         for template in NengaTemplates.all {
             var copy = model
