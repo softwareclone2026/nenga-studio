@@ -1,0 +1,9 @@
+.build/
+.build-*/
+dist/
+DerivedData/
+node_modules/
+*.xcuserstate
+xcuserdata/
+.DS_Store
+samples/output/

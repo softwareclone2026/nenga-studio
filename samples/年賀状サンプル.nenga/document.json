@@ -1,0 +1,412 @@
+{
+  "addressLayout" : {
+    "addressFont" : {
+      "mincho" : {
+
+      }
+    },
+    "addressSizeMM" : 3.4,
+    "coRecipientLayout" : "newColumn",
+    "coRecipientScale" : 0.8,
+    "companySizeMM" : 3,
+    "convertChomeBanchi" : true,
+    "direction" : "vertical",
+    "honorificPlacement" : "each",
+    "nameFont" : {
+      "mincho" : {
+
+      }
+    },
+    "nameSizeMM" : 5,
+    "offsetXMM" : 0,
+    "offsetYMM" : 0,
+    "omitPrefecture" : false,
+    "paper" : {
+      "heightMM" : 100,
+      "kind" : "official",
+      "widthMM" : 148
+    },
+    "postalCodeFrame" : {
+      "boxCount" : 7,
+      "boxHeightMM" : 8,
+      "boxWidthMM" : 5.7,
+      "digitSizeMM" : 6.2,
+      "leftMM" : 29,
+      "lineWidthMM" : 0.2,
+      "showsDigits" : true,
+      "showsFrame" : true,
+      "topMM" : 5
+    },
+    "sender" : {
+      "corner" : "bottomLeft",
+      "direction" : "vertical",
+      "isEnabled" : true,
+      "marginMM" : 8,
+      "showsEmail" : false,
+      "showsPhone" : true,
+      "showsPostalCode" : true,
+      "sizeMM" : 2.4
+    },
+    "showCompany" : false,
+    "showsGuides" : false
+  },
+  "assetFileNames" : [
+
+  ],
+  "contacts" : [
+    {
+      "address1" : "東京都渋谷区",
+      "address2" : "神宮前1-2-3 サンプルマンション101",
+      "coRecipients" : [
+
+      ],
+      "company" : "",
+      "department" : "",
+      "email" : "yamada@example.jp",
+      "familyName" : "山田",
+      "givenName" : "太郎",
+      "group" : "友人",
+      "honorific" : "様",
+      "id" : "B66371FC-6665-49CA-8F51-E9BC82B23198",
+      "isPrintable" : true,
+      "note" : "",
+      "phone" : "03-1111-2222",
+      "postalCode" : "1500001",
+      "status" : "planned"
+    },
+    {
+      "address1" : "神奈川県横浜市西区",
+      "address2" : "高島2-18-1",
+      "coRecipients" : [
+        {
+          "honorific" : "様",
+          "id" : "C39D180C-8644-421D-B8B5-3EA1C9CF9949",
+          "name" : "一郎"
+        }
+      ],
+      "company" : "",
+      "department" : "",
+      "email" : "",
+      "familyName" : "鈴木",
+      "givenName" : "花子",
+      "group" : "友人",
+      "honorific" : "様",
+      "id" : "791BA0C5-654F-4C80-8EA8-75423DF5FD98",
+      "isPrintable" : true,
+      "note" : "",
+      "phone" : "045-333-4444",
+      "postalCode" : "2200011",
+      "status" : "received"
+    },
+    {
+      "address1" : "愛知県名古屋市中区",
+      "address2" : "栄3-15-33 サンプルビル 8F",
+      "coRecipients" : [
+
+      ],
+      "company" : "株式会社サンプル",
+      "department" : "営業部",
+      "email" : "",
+      "familyName" : "佐藤",
+      "givenName" : "健一",
+      "group" : "仕事",
+      "honorific" : "先生",
+      "id" : "1DEC754F-279A-4196-945F-3DEFE9B2CA7B",
+      "isPrintable" : true,
+      "note" : "",
+      "phone" : "052-555-6666",
+      "postalCode" : "4600008",
+      "status" : "planned"
+    },
+    {
+      "address1" : "大阪府大阪市北区",
+      "address2" : "梅田1-1-3 梅田サンプルタワー 21F",
+      "coRecipients" : [
+
+      ],
+      "company" : "",
+      "department" : "",
+      "email" : "",
+      "familyName" : "高橋",
+      "givenName" : "美咲",
+      "group" : "親戚",
+      "honorific" : "様",
+      "id" : "8CD95A6B-F0D3-458F-8CB3-6DE5A27B277F",
+      "isPrintable" : true,
+      "note" : "",
+      "phone" : "06-7777-8888",
+      "postalCode" : "5300001",
+      "status" : "planned"
+    },
+    {
+      "address1" : "北海道札幌市中央区",
+      "address2" : "北一条西2-4",
+      "coRecipients" : [
+
+      ],
+      "company" : "",
+      "department" : "",
+      "email" : "",
+      "familyName" : "田中",
+      "givenName" : "誠",
+      "group" : "親戚",
+      "honorific" : "様",
+      "id" : "87ECFCEB-344F-4EC5-98E0-71F821742E76",
+      "isPrintable" : true,
+      "note" : "喪中のため年賀状は送らない（寒中見舞いを送る）",
+      "phone" : "011-222-3333",
+      "postalCode" : "0600001",
+      "status" : "mourning"
+    },
+    {
+      "address1" : "福岡県福岡市中央区",
+      "address2" : "天神2-5-19 天神サンプルビル 5F",
+      "coRecipients" : [
+        {
+          "honorific" : "様",
+          "id" : "19392279-C4B5-4641-BB02-ACC08C3C6D0B",
+          "name" : "健"
+        },
+        {
+          "honorific" : "様",
+          "id" : "625C7C17-F707-460D-955C-32C3F935D4E3",
+          "name" : "葵"
+        },
+        {
+          "honorific" : "様",
+          "id" : "7234D36F-A971-49BB-BDF9-FF651BD5BE85",
+          "name" : "光"
+        }
+      ],
+      "company" : "",
+      "department" : "",
+      "email" : "ito@example.jp",
+      "familyName" : "伊藤",
+      "givenName" : "由紀",
+      "group" : "仕事",
+      "honorific" : "様",
+      "id" : "2C0CB1A4-36CF-40C2-B0F6-8A912B4B505E",
+      "isPrintable" : true,
+      "note" : "",
+      "phone" : "092-444-5555",
+      "postalCode" : "8100001",
+      "status" : "planned"
+    },
+    {
+      "address1" : "宮城県仙台市青葉区",
+      "address2" : "一番町4-6-1",
+      "coRecipients" : [
+
+      ],
+      "company" : "",
+      "department" : "",
+      "email" : "",
+      "familyName" : "渡辺",
+      "givenName" : "浩",
+      "group" : "友人",
+      "honorific" : "様",
+      "id" : "A9FD653C-DE9E-4E1F-95FF-C715F34BCFF8",
+      "isPrintable" : true,
+      "note" : "",
+      "phone" : "022-666-7777",
+      "postalCode" : "9800811",
+      "status" : "planned"
+    },
+    {
+      "address1" : "京都府京都市下京区",
+      "address2" : "東塩小路町721-1",
+      "coRecipients" : [
+
+      ],
+      "company" : "",
+      "department" : "",
+      "email" : "",
+      "familyName" : "中村",
+      "givenName" : "あゆみ",
+      "group" : "友人",
+      "honorific" : "様",
+      "id" : "F49621DB-8F7C-4DC3-868C-5040480C8F77",
+      "isPrintable" : true,
+      "note" : "今年は欠礼",
+      "phone" : "075-888-9999",
+      "postalCode" : "6008216",
+      "status" : "skip"
+    }
+  ],
+  "design" : {
+    "elements" : [
+      {
+        "motif" : {
+          "_0" : {
+            "frame" : {
+              "height" : 30,
+              "rotationDegrees" : 0,
+              "width" : 92,
+              "x" : -6,
+              "y" : -8
+            },
+            "id" : "DCA4BD87-F739-4F1D-B3EC-533006CE927D",
+            "isLocked" : false,
+            "kind" : "goldCloud",
+            "lineWidthMM" : 0.5,
+            "name" : "金雲",
+            "opacity" : 0.55,
+            "paletteName" : "紅白金"
+          }
+        }
+      },
+      {
+        "motif" : {
+          "_0" : {
+            "frame" : {
+              "height" : 26,
+              "rotationDegrees" : 0,
+              "width" : 70,
+              "x" : 92,
+              "y" : 78
+            },
+            "id" : "9A280D92-F398-44AB-AC0C-A006EA1848FA",
+            "isLocked" : false,
+            "kind" : "goldCloud",
+            "lineWidthMM" : 0.5,
+            "name" : "金雲",
+            "opacity" : 0.4,
+            "paletteName" : "紅白金"
+          }
+        }
+      },
+      {
+        "motif" : {
+          "_0" : {
+            "frame" : {
+              "height" : 44,
+              "rotationDegrees" : 0,
+              "width" : 50,
+              "x" : 20,
+              "y" : 20
+            },
+            "id" : "BE1F20C1-2C43-4BBF-A38E-2D7DF4EB5D2E",
+            "isLocked" : false,
+            "kind" : "zodiacAnimal",
+            "lineWidthMM" : 0.6,
+            "name" : "干支のイラスト",
+            "opacity" : 1,
+            "paletteName" : "紅白金"
+          }
+        }
+      },
+      {
+        "motif" : {
+          "_0" : {
+            "frame" : {
+              "height" : 30,
+              "rotationDegrees" : 0,
+              "width" : 42,
+              "x" : 12,
+              "y" : 66
+            },
+            "id" : "CDE19163-13BA-4898-821E-5D285442F75E",
+            "isLocked" : false,
+            "kind" : "pineBambooPlum",
+            "lineWidthMM" : 0.45,
+            "name" : "松竹梅",
+            "opacity" : 0.95,
+            "paletteName" : "紅白金"
+          }
+        }
+      },
+      {
+        "text" : {
+          "_0" : {
+            "alignment" : "center",
+            "color" : {
+              "a" : 1,
+              "b" : 32,
+              "g" : 35,
+              "r" : 42
+            },
+            "direction" : "vertical",
+            "font" : {
+              "mincho" : {
+
+              }
+            },
+            "frame" : {
+              "height" : 62,
+              "rotationDegrees" : 0,
+              "width" : 16,
+              "x" : 112,
+              "y" : 14
+            },
+            "id" : "680B24F0-C922-464E-9745-0F123FDA6A21",
+            "isLocked" : false,
+            "letterSpacingMM" : 1.4,
+            "lineSpacingMM" : 0,
+            "name" : "賀詞（謹賀新年）",
+            "opacity" : 1,
+            "sizeMM" : 12.5,
+            "text" : "謹賀新年",
+            "usesPlaceholders" : false,
+            "weight" : "bold"
+          }
+        }
+      },
+      {
+        "text" : {
+          "_0" : {
+            "alignment" : "center",
+            "color" : {
+              "a" : 1,
+              "b" : 32,
+              "g" : 35,
+              "r" : 42
+            },
+            "direction" : "horizontal",
+            "font" : {
+              "mincho" : {
+
+              }
+            },
+            "frame" : {
+              "height" : 8,
+              "rotationDegrees" : 0,
+              "width" : 44,
+              "x" : 96,
+              "y" : 84
+            },
+            "id" : "4DC69200-73F6-419A-B48E-9D8622F153CD",
+            "isLocked" : false,
+            "letterSpacingMM" : 0.3,
+            "lineSpacingMM" : 0,
+            "name" : "年号",
+            "opacity" : 1,
+            "sizeMM" : 4.2,
+            "text" : "令和九年 元旦",
+            "usesPlaceholders" : false,
+            "weight" : "regular"
+          }
+        }
+      }
+    ],
+    "paperColor" : {
+      "a" : 1,
+      "b" : 247,
+      "g" : 253,
+      "r" : 255
+    },
+    "templateID" : "kingu-shinnen-sheep"
+  },
+  "formatVersion" : 1,
+  "printRotation" : 90,
+  "sender" : {
+    "address1" : "東京都千代田区",
+    "address2" : "千代田1-1-1 サンプルビル 10F",
+    "email" : "nenga@example.jp",
+    "familyName" : "年賀",
+    "givenName" : "太郎",
+    "note" : "",
+    "phone" : "03-1234-5678",
+    "postalCode" : "1000001"
+  },
+  "year" : 2027
+}
