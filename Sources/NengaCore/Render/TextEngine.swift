@@ -173,7 +173,31 @@ public enum TextEngine {
             }
             result.append(current)
         }
-        return result.isEmpty ? [""] : result
+        return result.isEmpty ? [""] : avoidingWidowLines(result, font: font, letterSpacingMM: options.letterSpacingMM, maxWidthMM: maxWidthMM)
+    }
+
+    /// 最終行が 1 文字だけにならないように、前の行から 1 文字送る。
+    private static func avoidingWidowLines(
+        _ lines: [String],
+        font: CTFont,
+        letterSpacingMM: Double,
+        maxWidthMM: Double?
+    ) -> [String] {
+        guard let maxWidthMM, lines.count >= 2 else { return lines }
+        var lines = lines
+        let lastIndex = lines.count - 1
+        guard lines[lastIndex].count == 1, lines[lastIndex - 1].count >= 3 else { return lines }
+        let previous = lines[lastIndex - 1]
+        let moved = String(previous.suffix(1))
+        let shortened = String(previous.dropLast())
+        let candidate = moved + lines[lastIndex]
+        guard measureHorizontal(shortened, font: font, letterSpacingMM: letterSpacingMM) <= maxWidthMM,
+              measureHorizontal(candidate, font: font, letterSpacingMM: letterSpacingMM) <= maxWidthMM else {
+            return lines
+        }
+        lines[lastIndex - 1] = shortened
+        lines[lastIndex] = candidate
+        return lines
     }
 
     private static func measureHorizontal(_ text: String, font: CTFont, letterSpacingMM: Double) -> Double {

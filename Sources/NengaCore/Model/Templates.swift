@@ -533,8 +533,8 @@ public enum NengaTemplates {
             builder.motif(.zodiacKanji, x: 108, y: 26, width: 32, height: 32, lineWidth: 0.5)
             builder.text(
                 "謹んで新春のお慶びを申し上げます",
-                x: 14, y: 26, width: 86, height: 10,
-                size: 5.0, direction: .horizontal, weight: .bold, alignment: .leading, letterSpacing: 0.6,
+                x: 12, y: 26, width: 92, height: 10,
+                size: 4.8, direction: .horizontal, weight: .bold, alignment: .leading, letterSpacing: 0.5,
                 name: "賀詞"
             )
             builder.text(

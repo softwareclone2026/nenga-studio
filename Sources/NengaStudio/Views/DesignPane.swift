@@ -99,6 +99,15 @@ struct DesignPane: View {
                         }
                     }
                 }
+                Menu("賀詞を挿入") {
+                    ForEach(NengaGreetings.groups) { group in
+                        Section(group.title) {
+                            ForEach(group.phrases, id: \.self) { phrase in
+                                Button(phrase) { addGreeting(phrase) }
+                            }
+                        }
+                    }
+                }
                 Button("写真を追加…") { addImage() }
             } label: {
                 Label("要素を追加", systemImage: "plus.rectangle.on.rectangle")
@@ -225,6 +234,28 @@ struct DesignPane: View {
         )
         document.update(undoManager: undoManager, actionName: "モチーフを追加") { model in
             model.design.elements.append(.motif(element))
+        }
+        selectedElementID = element.id
+    }
+
+    /// 賀詞や挨拶文を、文面に合った大きさの縦書きテキストとして置く。
+    private func addGreeting(_ phrase: String) {
+        let isLong = phrase.count > 12
+        let size = isLong ? 5.6 : 11.0
+        let element = TextElement(
+            name: "賀詞（\(phrase.prefix(8))）",
+            frame: ElementFrame(x: 96, y: 18, width: 48, height: min(Double(phrase.count) * size + 6, 70)),
+            text: phrase,
+            font: .mincho,
+            weight: isLong ? .regular : .bold,
+            sizeMM: size,
+            direction: .vertical,
+            alignment: .leading,
+            letterSpacingMM: isLong ? 0.6 : 1.2,
+            lineSpacingMM: isLong ? 3.0 : 2.0
+        )
+        document.update(undoManager: undoManager, actionName: "賀詞を挿入") { model in
+            model.design.elements.append(.text(element))
         }
         selectedElementID = element.id
     }
